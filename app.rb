@@ -42,4 +42,6 @@ post '/new' do
 		@error = @c.errors.full_messages.first
    		erb :new
 	end
+
+	redirect to '/'
  end
