@@ -22,5 +22,5 @@ get '/' do
 end
 
 get '/new' do
-  "Hello World"
+  erb :new
 end
