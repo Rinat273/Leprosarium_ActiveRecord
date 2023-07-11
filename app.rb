@@ -22,5 +22,13 @@ get '/' do
 end
 
 get '/new' do
-  erb :new
+
+   erb :new
 end
+
+post '/new' do
+  @c = Post.new params[:post]
+  @c.save
+
+   erb :new
+ end
