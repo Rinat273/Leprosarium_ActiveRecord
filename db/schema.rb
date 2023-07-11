@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_11_162606) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_175401) do
+  create_table "authors", force: :cascade do |t|
+    t.text "user"
+    t.integer "post_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.date "created_date"
+    t.text "content"
+    t.integer "post_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.date "create_date"
     t.text "content"
