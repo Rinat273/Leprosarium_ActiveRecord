@@ -6,6 +6,7 @@ require 'sinatra/activerecord'
 set :database, {adapter: "sqlite3", database: "leprosorium.db"}
 
 class Post < ActiveRecord::Base
+	validates :content, presence: true
 	has_many :comments
 end
 
@@ -22,13 +23,16 @@ get '/' do
 end
 
 get '/new' do
-
+	@c = Post.new
    erb :new
 end
 
 post '/new' do
   @c = Post.new params[:post]
-  @c.save
-
-   erb :new
+  	if @c.save
+		erb "<h2>Пост добавлен</h2>"
+	else
+		@error = @c.errors.full_messages.first
+   		erb :new
+	end
  end
