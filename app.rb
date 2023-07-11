@@ -18,7 +18,14 @@ class Author < ActiveRecord::Base
 	has_many :comments
 end
 
+before do
+	@results = Post.all
+end
+
 get '/' do
+
+	@results = Post.order('created_at DESC')
+
 	erb :index		
 end
 
