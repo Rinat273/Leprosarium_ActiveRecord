@@ -20,3 +20,7 @@ end
 get '/' do
 	erb :index		
 end
+
+get '/new' do
+  "Hello World"
+end
